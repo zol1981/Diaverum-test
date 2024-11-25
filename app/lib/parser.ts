@@ -3,11 +3,10 @@ export const parse = (txt: any) => {
 	let i: number = 0;
 	let word: string = '';
 	let firstRow: boolean = true;
-	let rowCounter: number = 0;
 	let recordCounter: number = 0;
 	let testObject: any = {};
-	const keys = [];
-	const db = [];
+	const keys: string[] = [];
+	const db: any = [];
 
 	while(i < txt.length) {
 		if(txt.charAt(i) == '#') {
@@ -36,7 +35,6 @@ export const parse = (txt: any) => {
 					if(txt.charAt(i) == '\n') {
 						db.push(testObject);
 						testObject = {};
-						rowCounter ++;
 						recordCounter = 0;
 					} else {
 						recordCounter ++;
@@ -53,6 +51,7 @@ export const parse = (txt: any) => {
 		i++;
 	}
 
+	//console.log(db);
 	return([keys, db]);
 }
 
